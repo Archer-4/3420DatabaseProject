@@ -1,0 +1,22 @@
+
+INSERT INTO Equipment (EquipmentNumber,Fuel,Status,Brand,FieldID) VALUES 
+(1,'Diesel','Good','BMW',1),
+(2,'Electric','Good','Pontiac',2),
+(3,'Petrol','Good','Mazda',3),
+(4,'Diesel','Good','Toyota',4),
+(5,'Diesel','Good','GMC',6),
+(6,'Electric','Good','Pontiac',6),
+(7,'Diesel','Needs Repair','Mitsubishi',7),
+(8,'Electric','Good','Volkswagen',7),
+(9,'Diesel','Good','GMC',8),
+(10,'Electric','Good','Mazda',8),
+(11,'Electric','Good','Chrysler',9),
+(12,'Electric','Good','Ferrari',10),
+(13,'Electric','Good','Pontiac',10),
+(14,'Electric','Good','Nissan',11),
+(15,'Diesel','Good','Toyota',12),
+(16,'Petrol','Good','Volkswagen',13),
+(17,'Petrol','Good','Mercury',15),
+(18,'Diesel','Good','Chrysler',16),
+(19,'Diesel','Good','Scion',17),
+(20,'Electric','Good','Ford',18);

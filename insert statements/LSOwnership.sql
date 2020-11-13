@@ -1,0 +1,32 @@
+
+insert into LSOwnership (StockID, clientID) values (1, 1);
+insert into LSOwnership (StockID, clientID) values (2, 2);
+insert into LSOwnership (StockID, clientID) values (3, 3);
+insert into LSOwnership (StockID, clientID) values (4, 4);
+insert into LSOwnership (StockID, clientID) values (5, 5);
+insert into LSOwnership (StockID, clientID) values (1, 6);
+insert into LSOwnership (StockID, clientID) values (2, 7);
+insert into LSOwnership (StockID, clientID) values (3, 8);
+insert into LSOwnership (StockID, clientID) values (4, 9);
+insert into LSOwnership (StockID, clientID) values (5, 10);
+insert into LSOwnership (StockID, clientID) values (1, 11);
+insert into LSOwnership (StockID, clientID) values (2, 12);
+insert into LSOwnership (StockID, clientID) values (3, 13);
+insert into LSOwnership (StockID, clientID) values (4, 14);
+insert into LSOwnership (StockID, clientID) values (5, 15);
+insert into LSOwnership (StockID, clientID) values (1, 16);
+insert into LSOwnership (StockID, clientID) values (2, 17);
+insert into LSOwnership (StockID, clientID) values (3, 18);
+insert into LSOwnership (StockID, clientID) values (4, 19);
+insert into LSOwnership (StockID, clientID) values (5, 20);
+insert into LSOwnership (StockID, clientID) values (1, 2);
+insert into LSOwnership (StockID, clientID) values (3, 4);
+insert into LSOwnership (StockID, clientID) values (5, 4);
+insert into LSOwnership (StockID, clientID) values (5, 6);
+insert into LSOwnership (StockID, clientID) values (4, 19);
+insert into LSOwnership (StockID, clientID) values (5, 18);
+insert into LSOwnership (StockID, clientID) values (3, 14);
+insert into LSOwnership (StockID, clientID) values (2, 4);
+insert into LSOwnership (StockID, clientID) values (5, 13);
+insert into LSOwnership (StockID, clientID) values (3, 12);
+
