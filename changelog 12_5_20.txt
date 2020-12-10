@@ -1,0 +1,27 @@
+** ADDED **
+	--Foreign Key ClientID added to:
+		-Inventory
+		-incomingdeliveries
+		-outgoingdeliveries
+		-field_info
+		-employees
+		-livestock
+	--EquipmentType to equipment
+	--equipmentlog table
+	--Function Functionality.
+		--delClients is up and running.
+		--Trigger to update equipmentlog with changes in repair status
+		--Function and trigger to automatically deduct outgoing
+		inventory from inventory table.
+
+** REMOVED **
+	--out_services
+	--in_services
+	--inv_ownership
+	--field_ownership
+	--employed
+	--lsownership
+
+** CHANGED **
+	--Removed expected profit from outgoing deliveries, added stockID &
+	stockamount.

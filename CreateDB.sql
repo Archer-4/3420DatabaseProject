@@ -128,8 +128,9 @@ CREATE TABLE livestock (
 CREATE TABLE outgoingdeliveries (
   Out_DeliveryID int primary key,
   ClientID int,
+  stockID int,
+  stockAmount int,
   DeliveryDate date DEFAULT NULL,
-  Expected_Profit int DEFAULT NULL,
   Recipient varchar(50) DEFAULT NULL,
   foreign key (ClientID) references client 
 );

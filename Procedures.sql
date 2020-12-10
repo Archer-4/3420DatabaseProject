@@ -42,6 +42,18 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--To be used with outgoing/inventory update trigger
+CREATE OR REPLACE FUNCTION upInvAmt()
+RETURNS TRIGGER AS $$
+
+BEGIN
+    UPDATE inventory
+    SET amount = amount - new.stockamount
+    WHERE new.clientID = inventory.clientID
+    AND new.stockID = inventory.stockID;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- TRIGGERS --
@@ -53,3 +65,8 @@ FOR EACH ROW EXECUTE PROCEDURE delClient();
 -- Trigger for maintenaince log
 CREATE TRIGGER equipLog AFTER UPDATE ON equipment
 FOR EACH ROW EXECUTE PROCEDURE equipMaintLog();
+
+-- Trigger for updating inventory amounts after
+-- outgoing delivery is created
+CREATE TRIGGER upInvAmt AFTER INSERT ON outgoingdeliveries
+FOR EACH ROW EXECUTE PROCEDURE upInvAmt();

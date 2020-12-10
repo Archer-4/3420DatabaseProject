@@ -147,27 +147,27 @@ INSERT INTO livestock(SpeciesID,ClientID,Species,Food,Feed_Levels) VALUES
 (5,7,'Sheep','Grasses','low');
 
 -- OUTGOING DELIVERIES --
-INSERT INTO outgoingdeliveries (Out_DeliveryID,ClientID,DeliveryDate,Expected_Profit,Recipient) VALUES 
-(1,19,'2021-02-21',1137,'Quatz'),
-(2,12,'2021-02-21',136,'Twitternation'),
-(3,3,'2020-01-28',948,'Blogpad'),
-(4,2,'2020-07-27',1566,'Trunyx'),
-(5,14,'2020-11-11',1972,'Kazio'),
-(6,15,'2021-03-16',112,'Innojam'),
-(7,2,'2019-12-29',1058,'Quatz'),
-(8,14,'2020-10-20',634,'InnoZ'),
-(9,13,'2020-12-11',512,'Shufflebeat'),
-(10,10,'2020-12-07',1523,'Fiveclub'),
-(11,18,'2020-04-04',409,'Photospace'),
-(12,12,'2019-10-28',189,'Riffpath'),
-(13,9,'2020-06-25',1569,'Gabtype'),
-(14,2,'2020-05-23',800,'Rooxo'),
-(15,6,'2019-11-21',1497,'Wordify'),
-(16,8,'2020-08-07',458,'Jabbertype'),
-(17,3,'2019-11-18',439,'Brainverse'),
-(18,20,'2020-07-19',746,'Jabberstorm'),
-(19,13,'2020-08-10',1087,'Devify'),
-(20,1,'2020-12-19',986,'Zoombox');
+--INSERT INTO outgoingdeliveries (Out_DeliveryID,ClientID,stockID,stockAmount,DeliveryDate,Recipient) VALUES 
+--(1,19,'2021-02-21',1137,'Quatz'),
+--(2,12,'2021-02-21',136,'Twitternation'),
+--(3,3,'2020-01-28',948,'Blogpad'),
+--(4,2,'2020-07-27',1566,'Trunyx'),
+--(5,14,'2020-11-11',1972,'Kazio'),
+--(6,15,'2021-03-16',112,'Innojam'),
+--(7,2,'2019-12-29',1058,'Quatz'),
+--(8,14,'2020-10-20',634,'InnoZ'),
+--(9,13,'2020-12-11',512,'Shufflebeat'),
+--(10,10,'2020-12-07',1523,'Fiveclub'),
+--(11,18,'2020-04-04',409,'Photospace'),
+--(12,12,'2019-10-28',189,'Riffpath'),
+--(13,9,'2020-06-25',1569,'Gabtype'),
+--(14,2,'2020-05-23',800,'Rooxo'),
+--(15,6,'2019-11-21',1497,'Wordify'),
+--(16,8,'2020-08-07',458,'Jabbertype'),
+--(17,3,'2019-11-18',439,'Brainverse'),
+--(18,20,'2020-07-19',746,'Jabberstorm'),
+--(19,13,'2020-08-10',1087,'Devify'),
+--(20,1,'2020-12-19',986,'Zoombox');
 
 
 -- EQUIPMENT --

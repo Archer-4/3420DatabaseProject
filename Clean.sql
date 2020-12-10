@@ -2,6 +2,7 @@ drop table client cascade;
 drop table crops cascade;
 drop table employees cascade;
 drop table equipment cascade;
+drop table equipmentlog cascade;
 drop table field_info cascade;
 drop table growing cascade;
 drop table incomingdeliveries cascade;
