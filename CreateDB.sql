@@ -48,6 +48,12 @@ CREATE TABLE equipment (
   FieldID int,
   foreign key (FieldID) references field_info
 );
+CREATE TABLE equipmentlog (
+  Equipmentnumber int primary key,
+  fieldid int,
+  status varchar(20),
+  entry_date date
+);
 --Removed for simplicity
 --CREATE TABLE field_ownership (
 --  FieldID int,
