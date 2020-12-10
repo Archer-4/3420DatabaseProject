@@ -72,10 +72,11 @@ CREATE TABLE growing (
 );
 --Added foreign key to reference client.
 CREATE TABLE incomingdeliveries (
-    In_DeliveryID int primary key,
+    In_DeliveryID serial primary key,
     ClientID int,
-    DeliveryDate date,
+    stockID int,
     Stock_levels int,
+    DeliveryDate date,
     Supplier varchar(30),
     foreign key (ClientID) references client
 );
@@ -95,6 +96,7 @@ CREATE TABLE inventory (
   Name text DEFAULT NULL,
   Category text DEFAULT NULL,
   Amount int DEFAULT NULL,
+  pricePerUnit numeric(4,2) DEFAULT 0,
   foreign key (ClientID) references client
 );
 
@@ -126,13 +128,22 @@ CREATE TABLE livestock (
 --Changed Date to DeliveryDate
 --Added clientID as foreign key
 CREATE TABLE outgoingdeliveries (
-  Out_DeliveryID int primary key,
+  Out_DeliveryID serial primary key,
   ClientID int,
   stockID int,
   stockAmount int,
   DeliveryDate date DEFAULT NULL,
   Recipient varchar(50) DEFAULT NULL,
   foreign key (ClientID) references client 
+);
+
+CREATE TABLE transactions (
+  id serial primary key,
+  clientID int,
+  transaction varchar(40),
+  transactionID int,
+  amount numeric(8,2),
+  foreign key (clientID) references client
 );
 --Removed for simplicity
 --CREATE TABLE out_services (

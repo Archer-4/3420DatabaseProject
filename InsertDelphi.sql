@@ -126,17 +126,17 @@ INSERT INTO  field_info (FieldID,ClientID,Acreage,CropID) VALUES
 (20,3,566,4);
 
 -- INVENTORY --
-INSERT INTO Inventory (StockID,ClientID,Name,Category,Amount) VALUES 
-(1,1,'Cut_grass','Feed',6546),
-(2,2,'Corn','Feed',7002),
-(3,3,'Hay','Feed',2133),
-(4,4,'Wheat','Feed',3445),
-(5,5,'Cereal_grains','Feed',4192),
-(6,6,'Tractors','Equipment',4),
-(7,7,'Hoses','Equipment',100),
-(8,8,'Cutters','Equipment',45),
-(9,9,'Harvesters','Equipment',40),
-(10,10,'Mowers','Equipment',35);
+INSERT INTO Inventory (StockID,ClientID,Name,Category,Amount,pricePerUnit) VALUES 
+(1,1,'Cut_grass','Feed',6546,0.10),
+(2,2,'Corn','Feed',7002,0.2),
+(3,3,'Hay','Feed',21330,0.2),
+(4,4,'Wheat','Feed',3445,0.7),
+(5,5,'Cereal_grains','Feed',4192,0.6),
+(6,6,'Corn','Product',4,0.5),
+(7,7,'Apricots','Product',100,0.75),
+(8,8,'Apples','Product',45,0.90),
+(9,9,'Bananas','Product',40,0.6),
+(10,10,'Cabbage','Product',35,0.5);
 
 -- LIVESTOCK --
 INSERT INTO livestock(SpeciesID,ClientID,Species,Food,Feed_Levels) VALUES
@@ -263,24 +263,24 @@ INSERT INTO Growing (CropID, FieldID) VALUES
 --insert into LSOwnership (SpeciesID, clientID) values (3, 12);
 
 --INCOMING DELIVERIES --
-INSERT INTO IncomingDeliveries (In_DeliveryID,ClientID,DeliveryDate,Stock_levels,Supplier) VALUES 
-(1,2, '2020-10-28', 888, 'Fiveclub'),
-(2,3, '2020-04-09', 1437, 'Youspan'),
-(3,4, '2020-11-23', 608, 'Skiba'),
-(4,5, '2019-10-18', 1087, 'Youfeed'),
-(5,6, '2019-11-21', 412, 'Skilith'),
-(6,7, '2020-05-21', 1637, 'Twitterbridge'),
-(7,8, '2021-02-02', 883, 'Plambee'),
-(8,9, '2020-09-23', 998, 'Voomm'),
-(9,10, '2020-02-24', 287, 'Camido'),
-(10,11, '2020-11-12', 416, 'Abatz'),
-(11,12, '2020-09-15', 323, 'Tagopia'),
-(12,13, '2020-10-02', 455, 'Innojam'),
-(13,14, '2021-01-13', 1884, 'Voonder'),
-(14,15, '2020-09-12', 295, 'Yambee'),
-(15,16, '2021-01-05', 1381, 'Twinte'),
-(16,17, '2020-03-31', 1882, 'Tazzy'),
-(17,18, '2020-11-07', 1616, 'Thoughtbeat'),
-(18,19, '2020-07-17', 687, 'Jabbersphere'),
-(19,20, '2021-01-15', 209, 'Tazz'),
-(20,1, '2020-03-26', 937, 'Viva');
+--INSERT INTO IncomingDeliveries (In_DeliveryID,ClientID,DeliveryDate,Stock_levels,Supplier) VALUES 
+--(1,2, '2020-10-28', 888, 'Fiveclub'),
+--(2,3, '2020-04-09', 1437, 'Youspan'),
+--(3,4, '2020-11-23', 608, 'Skiba'),
+--(4,5, '2019-10-18', 1087, 'Youfeed'),
+--(5,6, '2019-11-21', 412, 'Skilith'),
+--(6,7, '2020-05-21', 1637, 'Twitterbridge'),
+--(7,8, '2021-02-02', 883, 'Plambee'),
+--(8,9, '2020-09-23', 998, 'Voomm'),
+--(9,10, '2020-02-24', 287, 'Camido'),
+--(10,11, '2020-11-12', 416, 'Abatz'),
+--(11,12, '2020-09-15', 323, 'Tagopia'),
+--(12,13, '2020-10-02', 455, 'Innojam'),
+--(13,14, '2021-01-13', 1884, 'Voonder'),
+--(14,15, '2020-09-12', 295, 'Yambee'),
+--(15,16, '2021-01-05', 1381, 'Twinte'),
+--(16,17, '2020-03-31', 1882, 'Tazzy'),
+--(17,18, '2020-11-07', 1616, 'Thoughtbeat'),
+--(18,19, '2020-07-17', 687, 'Jabbersphere'),
+--(19,20, '2021-01-15', 209, 'Tazz'),
+--(20,1, '2020-03-26', 937, 'Viva');

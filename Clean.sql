@@ -9,3 +9,4 @@ drop table incomingdeliveries cascade;
 drop table inventory cascade;
 drop table livestock cascade;
 drop table outgoingdeliveries cascade;
+drop table transactions cascade;

@@ -13,6 +13,12 @@
 		--Trigger to update equipmentlog with changes in repair status
 		--Function and trigger to automatically deduct outgoing
 		inventory from inventory table.
+		--Function and trigger to automatically add incoming inventory
+		to inventory table.
+		--Function and trigger to automatically add incoming/outgoing
+		to 'Transactions' Table along with cost / profit respectively.
+	--Table to record results of incoming/outgoing deliveries
+	'Transactions'
 
 ** REMOVED **
 	--out_services
@@ -25,3 +31,7 @@
 ** CHANGED **
 	--Removed expected profit from outgoing deliveries, added stockID &
 	stockamount.
+	--Changed indeliveryID and outdelivery id to serial ints, When
+	inserting into either table, use INSERT INTO out/in... (clientid,
+	stockid, stockamount, deliverydate, recipient) VALUES (...);
+
