@@ -1,100 +1,140 @@
-CREATE TABLE `client` (
-  `ClientID` int(11) DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `Phone` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE client (
+  ClientID int primary key,
+  name varchar(50) DEFAULT NULL,
+  address varchar(50) DEFAULT NULL,
+  Phone varchar(15) DEFAULT NULL
+);
+--Replaced "Type" with "CropType"
+CREATE TABLE crops (
+  CropID int primary key,
+  CropType text DEFAULT NULL,
+  Name text DEFAULT NULL,
+  Amount int DEFAULT NULL
+);
 
-CREATE TABLE `crops` (
-  `CropID` int(11) NOT NULL AUTO_INCREMENT,
-  `Type` text DEFAULT NULL,
-  `Name` text DEFAULT NULL,
-  `Amount` int(11) DEFAULT NULL,
-  PRIMARY KEY (`CropID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+CREATE TABLE employees (
+  EmployeeID int primary key,
+  ClientID int,
+  name varchar(20) DEFAULT NULL,
+  Phone varchar(50) DEFAULT NULL,
+  EmploymentStatus varchar(50) DEFAULT NULL,
+  Salary int DEFAULT NULL,
+  foreign key (ClientID) references client
+);
+--Removed for simplicity
+--CREATE TABLE employed (
+--  ClientID int DEFAULT NULL,
+--  EmployeeID int DEFAULT NULL,
+--  primary key (ClientID, EmployeeID),
+--  foreign key (ClientID) references client,
+--  foreign key (EmployeeID) references employees
+--);
 
-CREATE TABLE `employed` (
-  `ClientID` int(11) DEFAULT NULL,
-  `EmployeeID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE field_info (
+  FieldID int primary key,
+  ClientID int,
+  Acreage int DEFAULT NULL,
+  CropID int,
+  foreign key (CropID) references crops,
+  foreign key (ClientID) references client
+);
 
-CREATE TABLE `employees` (
-  `EmployeeID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `Phone` varchar(50) DEFAULT NULL,
-  `EmploymentStatus` varchar(50) DEFAULT NULL,
-  `Salary` int(11) DEFAULT NULL,
-  PRIMARY KEY (`EmployeeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+CREATE TABLE equipment (
+  EquipmentNumber int primary key,
+  EquipmentType varchar(50),
+  Fuel varchar(8) DEFAULT NULL,
+  Status varchar(50) DEFAULT NULL,
+  Brand varchar(50) DEFAULT NULL,
+  FieldID int,
+  foreign key (FieldID) references field_info
+);
+--Removed for simplicity
+--CREATE TABLE field_ownership (
+--  FieldID int,
+--  ClientID int,
+--  primary key (FieldID, ClientID),
+--  foreign key (FieldID) references field_info,
+--  foreign key (ClientID) references client
+--);
 
-CREATE TABLE `equipment` (
-  `EquipmentNumber` int(11) NOT NULL AUTO_INCREMENT,
-  `Fuel` varchar(8) DEFAULT NULL,
-  `Status` varchar(50) DEFAULT NULL,
-  `Brand` varchar(50) DEFAULT NULL,
-  `FieldID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`EquipmentNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+CREATE TABLE growing (
+  CropID int,
+  FieldID int,
+  primary key (CropID, FieldID),
+  foreign key (CropId) references crops,
+  foreign key (FieldID) references field_info
+);
+--Added foreign key to reference client.
+CREATE TABLE incomingdeliveries (
+    In_DeliveryID int primary key,
+    ClientID int,
+    DeliveryDate date,
+    Stock_levels int,
+    Supplier varchar(30),
+    foreign key (ClientID) references client
+);
+-- REMOVING
+--CREATE TABLE in_services (
+--    ClientID int,
+--   In_DeliveryID int,
+--    primary key (ClientID, In_DeliveryID),
+--    foreign key (ClientID) references client,
+--    foreign key (In_DeliveryID) references incomingdeliveries
+--);
+--Had to change "Type" to "Category"
+-- *** NEEDS REVISION ***
+CREATE TABLE inventory (
+  StockID int primary key,
+  ClientID int,
+  Name text DEFAULT NULL,
+  Category text DEFAULT NULL,
+  Amount int DEFAULT NULL,
+  foreign key (ClientID) references client
+);
 
-CREATE TABLE `field_info` (
-  `FieldID` int(11) NOT NULL AUTO_INCREMENT,
-  `Acreage` int(11) DEFAULT NULL,
-  `CropID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`FieldID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+--CREATE TABLE inv_ownership (
+--  StockID int,
+--  ClientID int,
+--  primary key (StockID, ClientID),
+--  foreign key (StockId) references inventory,
+--  foreign key (ClientId) references client
+--);
 
-CREATE TABLE `field_ownership` (
-  `FieldID` int(11) DEFAULT NULL,
-  `ClientID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE livestock (
+  SpeciesID int primary key,
+  ClientID int,
+  Species varchar(25) DEFAULT NULL,
+  Food varchar(25) DEFAULT NULL,
+  Feed_Levels varchar(45) DEFAULT NULL,
+  foreign key (ClientID) references client
+);
+--Removed for simplicity
+--CREATE TABLE lsownership (
+--  SpeciesID int,
+--  clientID int,
+--  primary key (SpeciesID, clientID),
+--  foreign key (SpeciesID) references livestock,
+--  foreign key (clientID) references client
+--);
 
-CREATE TABLE `growing` (
-  `CropID` int(11) DEFAULT NULL,
-  `FieldID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `incomingdeliveries` (
-  `ClientID` int(11) DEFAULT NULL,
-  `In_DeliveryID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `inv_ownership` (
-  `StockID` int(11) DEFAULT NULL,
-  `ClientID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `inventory` (
-  `StockID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` text DEFAULT NULL,
-  `Type` text DEFAULT NULL,
-  `Amount` int(11) DEFAULT NULL,
-  PRIMARY KEY (`StockID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
-
-CREATE TABLE `livestock` (
-  `SpeciesID` int(11) NOT NULL AUTO_INCREMENT,
-  `Species` varchar(25) DEFAULT NULL,
-  `Food` varchar(25) DEFAULT NULL,
-  `Feed_Levels` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`SpeciesID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
-
-CREATE TABLE `lsownership` (
-  `SpeciesID` int(11) DEFAULT NULL,
-  `clientID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `out_services` (
-  `ClientID` int(11) DEFAULT NULL,
-  `Out_DeliveryID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `outgoingdeliveries` (
-  `Out_DeliveryID` int(11) DEFAULT NULL,
-  `Date` date DEFAULT NULL,
-  `Expected_Profit` int(11) DEFAULT NULL,
-  `Recipient` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--Changed Date to DeliveryDate
+--Added clientID as foreign key
+CREATE TABLE outgoingdeliveries (
+  Out_DeliveryID int primary key,
+  ClientID int,
+  DeliveryDate date DEFAULT NULL,
+  Expected_Profit int DEFAULT NULL,
+  Recipient varchar(50) DEFAULT NULL,
+  foreign key (ClientID) references client 
+);
+--Removed for simplicity
+--CREATE TABLE out_services (
+--  ClientID int,
+--  Out_DeliveryID int,
+--  primary key (ClientID, Out_DeliveryID),
+--  foreign key (ClientID) references client,
+--  foreign key (Out_DeliveryID) references outgoingdeliveries
+--);
 
 
 
