@@ -59,7 +59,7 @@ BEGIN
     WHERE new.stockID = inventory.stockID;
 
     INSERT INTO transactions (clientid,transaction,transactionid,amount) VALUES
-    (new.clientID, 'Outbound Delivery', new.stockamount*price);
+    (new.clientID, 'Outbound Delivery', new.out_deliveryid,new.stockamount*price);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
