@@ -26,7 +26,7 @@ WHERE clientID = 2;
 --Select equipment that is not in good status
 SELECT *
 FROM Equipment
-WHERE status = 'good';
+WHERE NOT status = 'Good';
 
 --Select clients with at least 2 outgoing deliveries
 SELECT *
@@ -44,4 +44,23 @@ FROM (SELECT name, COUNT(client.clientID) deliveries
       GROUP BY name) t
 WHERE deliveries > 1;
 
---
+--Select the average pay of each Client
+SELECT name, avg(salary) AS avgsalary
+FROM (SELECT client.name AS name, employees.salary AS salary
+      FROM client, employees
+      WHERE client.clientID = employees.clientID) t
+GROUP BY name
+ORDER BY avgsalary DESC;
+
+--Select clients who own Chysler-made equipment
+SELECT name, equipmenttype, brand
+FROM client c, equipment e, field_info f
+WHERE c.clientID = f.clientID 
+AND f.fieldID = e.fieldID
+AND e.brand = 'Chrysler';
+
+--Select net change in funds from transactions for each client
+SELECT c.name, sum(t.amount) AS netchange
+FROM client c, transactions t
+WHERE c.clientID = t.clientID
+GROUP BY name;
