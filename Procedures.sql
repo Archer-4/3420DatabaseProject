@@ -85,6 +85,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--To be used with updateinstead trigger
+CREATE OR REPLACE FUNCTION upDateInstead()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE client
+    SET name = new.clientname
+    WHERE name = old.clientname;
+
+    UPDATE inventory
+    SET name = new.inventoryname, amount = new.amount
+    WHERE name = old.inventoryname
+    AND amount = old.amount;
+    RETURN NEW;
+END;
+$$LANGUAGE plpgsql;
 -- TRIGGERS --
 
 -- Trigger for deleting clients;
@@ -106,3 +121,6 @@ FOR EACH ROW EXECUTE PROCEDURE upInvAmt();
 -- incoming delivery is created.
 CREATE TRIGGER upIncAmt AFTER INSERT ON incomingdeliveries
 FOR EACH ROW EXECUTE PROCEDURE upIncAmt();
+-- Trigger for updateinstead function
+CREATE TRIGGER updateInstead INSTEAD OF UPDATE ON Inventory_Log
+FOR EACH ROW EXECUTE PROCEDURE upDateInstead();
