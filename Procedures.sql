@@ -27,8 +27,12 @@ BEGIN
     DELETE
     FROM inventory
     WHERE inventory.clientID = old.clientID;
+    
+    DELETE
+    FROM transactions
+    WHERE transactions.clientID = old.clientID;
 
-    RETURN NEW;
+    RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
 
