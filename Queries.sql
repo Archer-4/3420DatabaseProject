@@ -60,7 +60,7 @@ AND f.fieldID = e.fieldID
 AND e.brand = 'Chrysler';
 
 --Select net change in funds from transactions for each client
-SELECT c.name, sum(t.amount) AS netchange
+SELECT c.name, count(t.id) AS numoftransactions, sum(t.amount) AS netchange
 FROM client c, transactions t
 WHERE c.clientID = t.clientID
 GROUP BY name;
