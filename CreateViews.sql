@@ -14,3 +14,10 @@ SELECT c.name AS Name, e.equipmenttype AS equipment, e.brand AS brand, e.status 
 FROM client c, equipment e, field_info f
 WHERE c.clientID = f.clientID
 AND f.fieldID = e.fieldID;
+
+CREATE VIEW most_acres AS
+SELECT c.name AS Name, sum(f.acreage) AS Total_Acres
+FROM client c, field_info f
+WHERE c.clientID = f.clientId
+GROUP BY Name
+ORDER BY Total_Acres DESC;
